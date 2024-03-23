@@ -1,5 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using ProyectoEldoria.Datos;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
+        opciones.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql")));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
