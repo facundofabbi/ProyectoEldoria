@@ -10,6 +10,8 @@ namespace ProyectoEldoria.Datos
         }
 
         //Aca van los modelos
-        public DbSet<Persona> Persona { get; set; }
+        public DbSet<Aventurero> Aventurero { get; set; }
+
+        public DbSet<Mentor> Mentor { get; set; }
     }
 }
