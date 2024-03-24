@@ -25,8 +25,16 @@ git clone https://github.com/facundofabbi/ProyectoEldoria
 </p>
 
 <p>
+
+<h2>Ejecucion</h2>
+
+Para ejecutar este proyecto, primero asegúrate de ejecutar el script "cargaBaseDeDatos" en tu instancia de SQL Server para cargar la base de datos inicial. A continuación, asegúrate de tener instalado Visual Studio 2022 y abre el proyecto en el entorno. Luego, abre una terminal NuGet y ejecuta los siguientes dos comandos en orden: "add-migration inicial" seguido de "update-database". Estos comandos garantizarán que la base de datos esté actualizada con los últimos cambios del modelo. Finalmente, una vez que todo esté configurado correctamente, puedes ejecutar el código del proyecto en Chrome para interactuar con la aplicación.
+
   <h3>Mejor Alternativa</h3>
 
   Por cuestiones de tiempo, no se pudo realizar el proyecto de la mejor manera. 
   Lo ideal, para este proyecto es que el tipo de raza de los aventureros, la clase y los elementos, sean cada uno, independiente, es decir, que cada uno conoce su funcionalidad y al crear un aventurero y seleccionar los datos correspondientes, se haga referencia a estos datos, como objetos en si
 </p>
+
+
+![DiseñoEldoria](https://github.com/facundofabbi/ProyectoEldoria/assets/62101931/355998f5-4422-43d6-8402-9507e02117bb)
