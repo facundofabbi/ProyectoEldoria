@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ProyectoEldoria/Migrations/20240324172743_edicion.cs
+/ProyectoEldoria/Migrations/20240324172743_edicion.Designer.cs
+/ProyectoEldoria/Migrations/20240324173447_edicionq.cs
+/ProyectoEldoria/Migrations/20240324173447_edicionq.Designer.cs
+/ProyectoEldoria/Migrations/20240324183253_aa.cs
+/ProyectoEldoria/Migrations/20240324183253_aa.Designer.cs
+/ProyectoEldoria/Migrations/ApplicationDbContextModelSnapshot.cs
