@@ -28,7 +28,8 @@ git clone https://github.com/facundofabbi/ProyectoEldoria
 
 <h2>Ejecucion</h2>
 
-asegúrate de ejecutar el script "cargaBaseDeDatos" en tu instancia de SQL Server para cargar la base de datos inicial. A continuación, asegúrate de tener instalado Visual Studio 2022 y abre el proyecto en el entorno. Luego, abre una terminal NuGet y ejecuta los siguientes dos comandos en orden: "add-migration inicial" seguido de "update-database". Estos comandos garantizarán que la base de datos esté actualizada con los últimos cambios del modelo. Finalmente, una vez que todo esté configurado correctamente, puedes ejecutar el código del proyecto en Chrome para interactuar con la aplicación.
+Eejecuta el script "cargaBaseDeDatos" en tu instancia de SQL Server para cargar la base de datos inicial. A continuación, asegúrate de tener instalado Visual Studio 2022 y abre el proyecto en el entorno. 
+Luego, abre una terminal NuGet y ejecuta los siguientes dos comandos en orden: "add-migration inicial" seguido de "update-database". Estos comandos garantizarán que la base de datos esté actualizada con los últimos cambios del modelo. Finalmente, una vez que todo esté configurado correctamente, puedes ejecutar el código del proyecto en Chrome para interactuar con la aplicación.
 
   <h3>Mejor Alternativa</h3>
 
