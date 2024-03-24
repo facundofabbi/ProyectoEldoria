@@ -45,20 +45,19 @@
                         <input asp-for="Correo" class="form-control" placeholder="Ingrese el Correo">
                         <span asp-validation-for="Correo" class="text-danger"></span>
                     </div>
-                    <div class="form-gruop">
+                    <div class="form-group">
                         <label asp-for="Clase" class="control-label"></label>
-                        <input asp-for="Clase" class="form-control" placeholder="Ingrese la Clase">
-                        <span asp-validation-for="Clase" class="text-danger"></span>
+                        <select asp-for="Clase" class="form-control" asp-items="@ViewBag.Clases"></select>
                     </div>
-                    <div class="form-gruop">
+
+                    <div class="form-group">
                         <label asp-for="Raza" class="control-label"></label>
-                        <input asp-for="Raza" class="form-control" placeholder="Ingrese la Raza">
-                        <span asp-validation-for="Raza" class="text-danger"></span>
+                        <select asp-for="Raza" class="form-control" asp-items="@ViewBag.Razas"></select>
                     </div>
-                    <div class="form-gruop">
+
+                    <div class="form-group">
                         <label asp-for="Elemento" class="control-label"></label>
-                        <input asp-for="Elemento" class="form-control" placeholder="Ingrese el Elemento">
-                        <span asp-validation-for="Elemento" class="text-danger"></span>
+                        <select asp-for="Elemento" class="form-control" asp-items="@ViewBag.Elementos"></select>
                     </div>
                     <div class="form-gruop">
                         <label asp-for="Companiero" class="control-label"></label>
@@ -72,13 +71,7 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Mentor" class="control-label"></label>
-                        <select asp-for="Mentor" class="form-control">
-                            <option value="">Seleccione un Mentor</option>
-                            @foreach (var mentor in Model.Mentores)
-                            {
-                                <option value="@mentor.Id">@mentor.Nombre</option>
-                            }
-                        </select>
+                        <input asp-for="Mentor" class="form-control" name="Mentor"></input>
                     </div>
 
                     <div class="form-group mt-3">

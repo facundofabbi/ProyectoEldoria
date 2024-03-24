@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProyectoEldoria.Models
 {
@@ -19,7 +20,35 @@ namespace ProyectoEldoria.Models
         [Required(ErrorMessage = "Las habilidades son obligatorias")]
         public List<String> Habilidades { get; set; }
 
-        public int Mentor { get; set; }
+        public String Mentor { get; set; }
+
+        // Enumeración para la propiedad Clase
+        public enum ClaseEnum
+        {
+            Guerrero,
+            Mago,
+            Arquero
+        }
+
+        // Enumeración para la propiedad Raza
+        public enum RazaEnum
+        {
+            Humano,
+            Elfo,
+            Enano,
+            Orco
+        }
+
+        // Enumeración para la propiedad Elemento
+        public enum ElementoEnum
+        {
+            Fuego,
+            Agua,
+            Aire,
+            Tierra,
+            Luz,
+            Oscuridad
+        }
 
 
     }

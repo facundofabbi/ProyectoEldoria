@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ProyectoEldoria.Datos;
 using ProyectoEldoria.Models;
 using System.Diagnostics;
+using static ProyectoEldoria.Models.Aventurero;
 
 namespace ProyectoEldoria.Controllers
 {
@@ -19,14 +21,23 @@ namespace ProyectoEldoria.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _contexto.Aventurero.ToListAsync());
+            var aventureros = await _contexto.Aventurero.ToListAsync();
+            return View(aventureros);
         }
 
 
         [HttpGet]
         public IActionResult Crear()
         {
-            List<Mentor> Mentores = _contexto.Mentor.ToList();
+            var clases = Enum.GetValues(typeof(ClaseEnum)).Cast<ClaseEnum>().ToList();
+            var razas = Enum.GetValues(typeof(RazaEnum)).Cast<RazaEnum>().ToList();
+            var elementos = Enum.GetValues(typeof(ElementoEnum)).Cast<ElementoEnum>().ToList();
+
+            // Asignar listas a ViewBag
+            ViewBag.Clases = new SelectList(clases);
+            ViewBag.Razas = new SelectList(razas);
+            ViewBag.Elementos = new SelectList(elementos);
+
             return View();
         }
 
@@ -70,6 +81,8 @@ namespace ProyectoEldoria.Controllers
             }
             return View();
         }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

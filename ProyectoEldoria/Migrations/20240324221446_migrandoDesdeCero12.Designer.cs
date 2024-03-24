@@ -12,8 +12,8 @@ using ProyectoEldoria.Datos;
 namespace ProyectoEldoria.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240323131951_MigracionMentorYAventurero")]
-    partial class MigracionMentorYAventurero
+    [Migration("20240324221446_migrandoDesdeCero12")]
+    partial class migrandoDesdeCero12
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,9 +37,8 @@ namespace ProyectoEldoria.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Clase")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Clase")
+                        .HasColumnType("int");
 
                     b.Property<string>("Companiero")
                         .IsRequired()
@@ -49,9 +48,8 @@ namespace ProyectoEldoria.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Elemento")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Elemento")
+                        .HasColumnType("int");
 
                     b.Property<DateOnly>("FechaNacimiento")
                         .HasColumnType("date");
@@ -60,8 +58,9 @@ namespace ProyectoEldoria.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MentorCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("Mentor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -71,17 +70,14 @@ namespace ProyectoEldoria.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Raza")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Raza")
+                        .HasColumnType("int");
 
                     b.Property<string>("Retrato")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Codigo");
-
-                    b.HasIndex("MentorCodigo");
 
                     b.ToTable("Aventurero");
                 });
@@ -98,8 +94,9 @@ namespace ProyectoEldoria.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly>("Especialidad")
-                        .HasColumnType("date");
+                    b.Property<string>("Especialidad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -115,18 +112,7 @@ namespace ProyectoEldoria.Migrations
 
                     b.HasKey("Codigo");
 
-                    b.ToTable("Persona");
-                });
-
-            modelBuilder.Entity("ProyectoEldoria.Models.Aventurero", b =>
-                {
-                    b.HasOne("ProyectoEldoria.Models.Mentor", "Mentor")
-                        .WithMany()
-                        .HasForeignKey("MentorCodigo")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Mentor");
+                    b.ToTable("Mentor");
                 });
 #pragma warning restore 612, 618
         }

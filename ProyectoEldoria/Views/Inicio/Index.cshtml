@@ -12,6 +12,24 @@
     </div>
 </div>
 
+<div class="row mb-3">
+    <div class="col-md-4">
+        <input type="text" id="txtClase" class="form-control" placeholder="Buscar por clase">
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="txtRaza" class="form-control" placeholder="Buscar por raza">
+    </div>
+    <div class="col-md-4">
+        <input type="text" id="txtElemento" class="form-control" placeholder="Buscar por elemento">
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12 text-right">
+        <button id="btnBuscar" class="btn btn-primary">Buscar</button>
+    </div>
+</div>
+
 <div class="row">
     <div class="offset-12">
         <div class="card border">
@@ -20,7 +38,6 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <!--aca va el jquery tables-->
                     @if (Model.Count() > 0)
                     {
                         <table class="table table-bordered" id="tblAventureros" width="100%" cellspaciong="0">
@@ -55,7 +72,14 @@
                                         <td>@Html.DisplayFor(m => item.Raza) </td>
                                         <td>@Html.DisplayFor(m => item.Elemento) </td>
                                         <td>@Html.DisplayFor(m => item.Companiero) </td>
-                                        <td>@Html.DisplayFor(m => item.Habilidades) </td>
+                                        <td>
+                                            @foreach (var habilidad in item.Habilidades)
+                                            {
+                                                <span>@habilidad</span>
+
+                                                <br />
+                                            }
+                                        </td>
                                         <td>@Html.DisplayFor(m => item.Mentor) </td>
                                         <td>
                                             <a class="btn btn-warning" asp-action="Editar" asp-route-codigo="@item.Codigo"><i class="bi bi-pencil-fill"></i>Editar</a>
@@ -80,7 +104,7 @@
 @section Scripts{
     <script>
         $(document).ready(function () {
-            $('tblAventureros').DataTable({
+            var table = $('#tblAventureros').DataTable({
                 language: {
                     "decimal":"",
                     "emptyTable":"No hay informacion",
@@ -88,7 +112,7 @@
                     "infoEmpty": "Mostrando 0 to 0 of 0 entradas",
                     "infoFiltered":"(Fiiltrado de _MAX_ total Entradas)",
                     "infoPostFix":"",
-                    "thousends":",",
+                    "thousands":",",
                     "lengthMenu":"Mostrar _MENU_ Entradas",
                     "loadingRecords":"Cargando...",
                     "processing": "Procesando...",
@@ -101,6 +125,18 @@
                         "previous": "Anterior"
                     }
                 }
+            });
+
+            $('#btnBuscar').on('click', function () {
+                var clase = $('#txtClase').val();
+                var raza = $('#txtRaza').val();
+                var elemento = $('#txtElemento').val();
+
+                table
+                    .column(6).search(clase)
+                    .column(7).search(raza)
+                    .column(8).search(elemento)
+                    .draw();
             });
         });
     </script>
