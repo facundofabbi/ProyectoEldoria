@@ -18,7 +18,8 @@ namespace ProyectoEldoria.Models
         public String Companiero { get; set; }
         [Required(ErrorMessage = "Las habilidades son obligatorias")]
         public List<String> Habilidades { get; set; }
-        public Mentor Mentor { get; set; }
+
+        public int Mentor { get; set; }
 
 
     }

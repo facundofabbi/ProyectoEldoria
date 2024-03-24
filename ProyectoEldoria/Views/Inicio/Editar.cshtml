@@ -1,0 +1,91 @@
+﻿@model ProyectoEldoria.Models.Aventurero
+
+@{
+    ViewData["Title"] = "Editar aventurero";
+}
+
+<h1 class="text-center">El Archivo de Aventureros de Eldoria</h1>
+
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>Crear un aventurero</strong></h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="Editar">
+                    <!--Codigo del aventurero oculto-->
+                    <input type="hidden" asp-for="Codigo"/>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-gruop">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" placeholder="Ingrese el Nombre">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input asp-for="Apellido" class="form-control" placeholder="Ingrese el Apellido">
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Retrato" class="control-label"></label>
+                        <input asp-for="Retrato" class="form-control" placeholder="Ingrese el Retrato">
+                        <span asp-validation-for="Retrato" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Origen" class="control-label"></label>
+                        <input asp-for="Origen" class="form-control" placeholder="Ingrese el Origen">
+                        <span asp-validation-for="Origen" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="FechaNacimiento" class="control-label"></label>
+                        <input asp-for="FechaNacimiento" class="form-control" placeholder="Ingrese la FechaNacimiento">
+                        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Correo" class="control-label"></label>
+                        <input asp-for="Correo" class="form-control" placeholder="Ingrese el Correo">
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Clase" class="control-label"></label>
+                        <input asp-for="Clase" class="form-control" placeholder="Ingrese la Clase">
+                        <span asp-validation-for="Clase" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Raza" class="control-label"></label>
+                        <input asp-for="Raza" class="form-control" placeholder="Ingrese la Raza">
+                        <span asp-validation-for="Raza" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Elemento" class="control-label"></label>
+                        <input asp-for="Elemento" class="form-control" placeholder="Ingrese el Elemento">
+                        <span asp-validation-for="Elemento" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Companiero" class="control-label"></label>
+                        <input asp-for="Companiero" class="form-control" placeholder="Ingrese el Companiero">
+                        <span asp-validation-for="Companiero" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Habilidades" class="control-label"></label>
+                        <input asp-for="Habilidades" class="form-control" placeholder="Ingrese la Habilidades">
+                        <span asp-validation-for="Habilidades" class="text-danger"></span>
+                    </div>
+                    <div class="form-gruop">
+                        <label asp-for="Mentor" class="control-label"></label>
+                        <input asp-for="Mentor" class="form-control" type="number" placeholder="Ingrese el Mentor">
+                    </div>
+
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-Primary d-block mx-auto"><i class="bi bi-pencil-fill"></i>Editar aventurero</button>
+                    </div>
+
+                </form>
+                <a asp-controller="Inicio" asp-action="Index">Volver</a>
+            </div>
+
+        </div>
+    </div>
+</div>

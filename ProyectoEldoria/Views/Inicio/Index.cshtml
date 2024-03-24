@@ -7,7 +7,8 @@
 <h1 class="text-center">El Archivo de Aventureros de Eldoria</h1>
 <div class="row">
     <div class="offset-9 col-3 mb-3">
-        <a asp-action="Crear" asp-controller="Inicio" class="btn btn-secondary d-block mx-auto btn-lg">Nuevo Aventurero</a>
+        <a asp-action="Crear" asp-controller="Inicio" class="btn btn-secondary d-block mx-auto btn-lg">
+            <i class="bi bi-file-plus-fill"></i> Nuevo Aventurero</a>
     </div>
 </div>
 
@@ -18,40 +19,89 @@
                 <h3 class="text-white"><strong>Lista de aventureros</strong></h3>
             </div>
             <div class="card-body">
-                <!--aca va el jquery tables-->
-                @if (Model.Count() > 0)
-                {
-                    <table class="table table-bordered" id="tblAventureros" width="100%" cellspaciong="0">
-                        <thead>
-                            <tr>
-                                <th>@Html.DisplayNameFor(m => m.Codigo) </th>
-                                <th>@Html.DisplayNameFor(m => m.FechaNacimiento) </th>
-                                <th>@Html.DisplayNameFor(m => m.Correo) </th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(var item in Model)
-                            {
+                <div class="table-responsive">
+                    <!--aca va el jquery tables-->
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="tblAventureros" width="100%" cellspaciong="0">
+                            <thead>
                                 <tr>
-                                    <td>@Html.DisplayFor(m => item.Codigo)</td>
-                                    <td>@Html.DisplayFor(m => item.FechaNacimiento)</td>
-                                    <td>@Html.DisplayFor(m => item.Correo)</td>
-                                    <td>
-                                        <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Codigo">Editar</a>
-                                        <a class="btn btn-secondary" asp-action="Detalle" asp-route-id="@item.Codigo">Detalle</a>
-                                    </td>
+                                    <th>@Html.DisplayNameFor(m => m.Nombre) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Apellido) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Retrato) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Origen) </th>
+                                    <th>@Html.DisplayNameFor(m => m.FechaNacimiento) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Correo) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Clase) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Raza) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Elemento) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Companiero) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Habilidades) </th>
+                                    <th>@Html.DisplayNameFor(m => m.Mentor) </th>
+                                    <th>Acciones</th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-                else
-                {
-                    <p>¡No hay aventureros!</p>
-                }
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.Nombre) </td>
+                                        <td>@Html.DisplayFor(m => item.Apellido) </td>
+                                        <td>@Html.DisplayFor(m => item.Retrato) </td>
+                                        <td>@Html.DisplayFor(m => item.Origen) </td>
+                                        <td>@Html.DisplayFor(m => item.FechaNacimiento) </td>
+                                        <td>@Html.DisplayFor(m => item.Correo) </td>
+                                        <td>@Html.DisplayFor(m => item.Clase) </td>
+                                        <td>@Html.DisplayFor(m => item.Raza) </td>
+                                        <td>@Html.DisplayFor(m => item.Elemento) </td>
+                                        <td>@Html.DisplayFor(m => item.Companiero) </td>
+                                        <td>@Html.DisplayFor(m => item.Habilidades) </td>
+                                        <td>@Html.DisplayFor(m => item.Mentor) </td>
+                                        <td>
+                                            <a class="btn btn-warning" asp-action="Editar" asp-route-codigo="@item.Codigo"><i class="bi bi-pencil-fill"></i>Editar</a>
+                                            <a class="btn btn-secondary" asp-action="Detalle" asp-route-codigo="@item.Codigo"><i class="bi bi-info-circle-fill"></i>Detalle</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>¡No hay aventureros!</p>
+                    }
+                </div>
             </div>
 
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('tblAventureros').DataTable({
+                language: {
+                    "decimal":"",
+                    "emptyTable":"No hay informacion",
+                    "info":"Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 entradas",
+                    "infoFiltered":"(Fiiltrado de _MAX_ total Entradas)",
+                    "infoPostFix":"",
+                    "thousends":",",
+                    "lengthMenu":"Mostrar _MENU_ Entradas",
+                    "loadingRecords":"Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron resultados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+}
