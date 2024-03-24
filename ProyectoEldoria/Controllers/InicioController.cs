@@ -29,14 +29,7 @@ namespace ProyectoEldoria.Controllers
         [HttpGet]
         public IActionResult Crear()
         {
-            var clases = Enum.GetValues(typeof(ClaseEnum)).Cast<ClaseEnum>().ToList();
-            var razas = Enum.GetValues(typeof(RazaEnum)).Cast<RazaEnum>().ToList();
-            var elementos = Enum.GetValues(typeof(ElementoEnum)).Cast<ElementoEnum>().ToList();
-
-            // Asignar listas a ViewBag
-            ViewBag.Clases = new SelectList(clases);
-            ViewBag.Razas = new SelectList(razas);
-            ViewBag.Elementos = new SelectList(elementos);
+            CargarOpcionesEnums();
 
             return View();
         }
@@ -51,6 +44,7 @@ namespace ProyectoEldoria.Controllers
                 await _contexto.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            CargarOpcionesEnums();
             return View();
         }
 
@@ -66,6 +60,7 @@ namespace ProyectoEldoria.Controllers
             {
                 return NotFound();
             }
+            CargarOpcionesEnums();
             return View(aventurero);
         }
 
@@ -79,11 +74,20 @@ namespace ProyectoEldoria.Controllers
                 await _contexto.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            CargarOpcionesEnums();
             return View();
         }
 
+        private void CargarOpcionesEnums()
+        {
+            var clases = Enum.GetValues(typeof(ClaseEnum)).Cast<ClaseEnum>().ToList();
+            var razas = Enum.GetValues(typeof(RazaEnum)).Cast<RazaEnum>().ToList();
+            var elementos = Enum.GetValues(typeof(ElementoEnum)).Cast<ElementoEnum>().ToList();
 
-
+            ViewBag.Clases = new SelectList(clases);
+            ViewBag.Razas = new SelectList(razas);
+            ViewBag.Elementos = new SelectList(elementos);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
